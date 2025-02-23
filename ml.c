@@ -65,3 +65,10 @@ double* full_forward_props(Layer* l, double* input) {
     return out;
 }
 
+double error_calc(double* a, double* b, int n) {
+    double cumulative = 0;
+    for(int i=0;i<n;i++) {
+        cumulative+=pow((a[i]-b[i]),2);
+    }
+    return sqrt(cumulative/n);
+}

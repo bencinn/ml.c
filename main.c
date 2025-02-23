@@ -5,8 +5,8 @@
 #include "math.h"
 
 #define new_test(s,d) {printf("[testing] %s\n", s); bool out=d; if(!out) printf("[failed test] %s\n", s); else printf("[test success] %s\n", s);}
-#define asas(a) if(!(a)) return false;
-#define asnear(a,b) if (fabs(b-a)>0.0005) return false;
+#define asas(a) if(!(a)) return false
+#define asnear(a,b) if (fabs(b-a)>0.0005) return false
 
 bool test_new_layers() {
     Layer* l = new_layer(3);
@@ -81,10 +81,18 @@ bool test_forward_props_multi_layer() {
     return true;
 }
 
+bool test_err_calc() {
+    double a[6] = {1,2,3,4,5,6};
+    double b[6] = {6,5,4,3,2,1};
+    asnear(error_calc(a,b,6), 3.41565);
+    return true;
+}
+
 int main() {
     printf("test ml\n");
     new_test("test creating new layer", test_new_layers());
     new_test("test sigmoid", test_sigmoid());
     new_test("test forward props (two layer)", test_forward_props_two_layer());
     new_test("test forward props (multi layer)", test_forward_props_multi_layer());
+    new_test("test error calculation", test_err_calc());
 }

@@ -13,3 +13,4 @@ void layer_new_next(Layer* l, int next_size);
 double* forward_props(Layer* l, double* input);
 double* full_forward_props(Layer* l, double* input);
 void free_all_layer_after(Layer* l);
+double error_calc(double* a, double* b, int n);
